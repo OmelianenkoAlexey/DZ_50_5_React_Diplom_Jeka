@@ -1,0 +1,12 @@
+body {
+    overflow-y: hidden;
+}
+
+.GridTemplate {
+    background-image: url(./../../public/img/background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 10px;
+}
+
