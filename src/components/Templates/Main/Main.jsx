@@ -1,17 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TrainingCard from './ComponentMain/TrainingCard';
-import { Box, styled } from '@mui/system';
 import { classes } from '../../../api';
-
-const TrainingCardWrapper = styled(Box)(() => ({
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '20px',
-  padding: '20px',
-  justifyContent: 'flex-start',
-}));
-
-export let trainings = null;
+import './Main.css';
 
 export default function Trains() {
   const [trainingsData, setClasses] = useState([]);
@@ -27,11 +17,12 @@ export default function Trains() {
     })();
   }, []);
 
-  trainings = trainingsData;
+  const newTrainings = JSON.stringify(trainingsData);
+  localStorage.setItem('newTrainings', newTrainings);
+  localStorage.setItem('searchLocal', newTrainings);
 
   return (
-    <TrainingCardWrapper>
-
+      <div className='training_card_wrapper'>
       {trainingsData.map((training) => (
         <TrainingCard
           trainingName={training.name}
@@ -40,6 +31,6 @@ export default function Trains() {
           key={training.id}
         />
       ))}
-    </TrainingCardWrapper>
+    </div>
   );
 }

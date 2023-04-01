@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardActions,
@@ -8,29 +9,17 @@ import {
   Typography,
 } from '@mui/material';
 import CreateModal from './CreateModal';
-import { Link } from 'react-router-dom';
-import NameNextPage from '../../../NameNextPage';
 
-export let nameButton = null;
-
-
-export default function TreiningCard({ trainingName, imageSrc, info }) {
+export default function TreiningCard({
+  trainingName, imageSrc, info, on,
+}) {
   const [open, setOpenModal] = useState(false);
 
-
-
   const startQuiz = () => {
-    console.log(trainingName);
-
-    nameButton = trainingName;
+    localStorage.setItem('trainingName', trainingName);
   };
 
-  // split преобразеут строку в массив
-  // join объединяет в строку
   const newTrainingName = trainingName.split(' ').join('_').toLowerCase();
-
-  //console.log(trainingName.split(' '));
-  //console.log(newTrainingName);
 
   return (
     <>
@@ -50,23 +39,20 @@ export default function TreiningCard({ trainingName, imageSrc, info }) {
           </Typography>
           <Typography variant='body2' color='grey'>
             {info.slice(0, 40)}...
+
           </Typography>
         </CardContent>
         <CardActions>
-          {/* <Button sx={{ fontSize: '11px' }} size='small' onClick={startQuiz}>Записатись</Button> */}
-
-          <Button onClick={startQuiz} sx={{ fontSize: '11px' }} size="small">
-            <Link
-              style={{ textDecoration: 'none', color: 'inherit' }}
-              to={`/test/${newTrainingName}`}
-
-            >
-              Открыть
-            </Link>
-
-          </Button>
-
-
+          {
+            !on && <Button onClick={startQuiz} sx={{ fontSize: '11px' }} size='small'>
+              <Link
+                style={{ textDecoration: 'none', color: 'inherit' }}
+                to={`/gym_team/${newTrainingName}`}
+              >
+                Открыть
+              </Link>
+            </Button>
+          }
           <Button sx={{ fontSize: '11px', color: 'white' }} size='small'
             onClick={() => setOpenModal(true)}>Дізнатись більше</Button>
         </CardActions>
@@ -78,10 +64,6 @@ export default function TreiningCard({ trainingName, imageSrc, info }) {
         trainingName={trainingName}
         info={info}
       />
-
-
-
-
     </>
   );
 }

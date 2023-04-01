@@ -12,10 +12,33 @@ input {
     margin: 5px;
     cursor: pointer;
     opacity: 0.4;
+    text-decoration: none;
 }
 
 body {
     overflow-y: hidden;
 }
 
+.header-title {
+    color: white;
+    font-weight: 500;
+    font-size: 45px;
+}
 
+@media (max-width: 768.8px) {
+
+    .header-title {
+
+        font-size: 35px;
+    }
+
+}
+
+@media (max-width: 576.8px) {
+
+    .header-title {
+
+        font-size: 25px;
+    }
+
+}

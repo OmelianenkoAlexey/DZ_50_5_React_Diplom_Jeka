@@ -1,42 +1,48 @@
 import React, { useState } from 'react';
-import { Typography } from '@mui/material';
-import { trainings } from '../Main/Main';
+import { Link } from 'react-router-dom';
 import './Header.css';
+import { reset } from '../Main/ComponentMain/NameNextPage';
 
 export default function Header() {
   const [inputWidth, setInputWidth] = useState('120px');
-
   const handleFocus = () => {
     setInputWidth('180px');
   };
-
   const handleBlur = () => {
     setInputWidth('120px');
   };
 
   const [inputValue, setInputValue] = useState('');
-
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
-  const handleButtonClick = () => {
-    // Обработка нажатия кнопки 'ОК'
-    {
-      trainings.map(i => {
-        if (i.name === inputValue) {
-          console.log(inputValue);
-          console.log(i.info);
-        }
-      });
+  const newInputValue = inputValue.split(' ').join('_').toLowerCase();
+
+  const searchLocal = localStorage.getItem('searchLocal');
+  const searchLocalMap = JSON.parse(searchLocal);
+
+  let search;
+  let pach = '/gym_team/';
+
+  searchLocalMap.map((i) => {
+    if (i.name.toLowerCase() === inputValue.toLowerCase()) {
+      search = i;
+      pach = `/gym_team/${newInputValue}`;
     }
+    return ('');
+  });
+
+  const startQuiz = () => {
+    localStorage.removeItem('trainingName');
+    const newTrainings = JSON.stringify(search);
+    localStorage.setItem('newTrainings', newTrainings);
+    reset();
   };
 
   return (
     <>
-      <Typography variant='h3' component='h2' color='white'>
-        Gym Team
-      </Typography>
+      <h1 className='header-title'>Gym Team</h1>
       <div>
         <input
           onClick={handleFocus}
@@ -47,7 +53,15 @@ export default function Header() {
           type='text'
           placeholder='Пошук тренування'
         />
-        <button className='headerButton' onClick={handleButtonClick}>ОК</button>
+
+        <button onClick={startQuiz} className='headerButton'>
+          <Link
+            style={{ textDecoration: 'none', color: 'inherit' }}
+            to={pach}
+          >Пошук
+          </Link>
+        </button>
+
       </div>
     </>
   );
