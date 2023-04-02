@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import './NameNextPage.css';
 import { Button } from '@mui/material';
-import CreateModal from './CreateModal';
+import CreateModal from '../../components/Templates/Main/ComponentMain/CreateModal';
+import './SportPage.css';
 
 let resetDay;
 let resetTime;
@@ -15,15 +14,12 @@ export function reset() {
 }
 
 export default function NameNextPage() {
-  const { name } = useParams();
-  console.log(name);
-
   let data = null;
   let time = {};
 
-  const nameData = localStorage.getItem('newTrainings');
+  const name = localStorage.getItem('newTrainings');
 
-  const newName = JSON.parse(nameData);
+  const newName = JSON.parse(name);
   const nameButton = localStorage.getItem('trainingName');
 
   if (nameButton === null) {
@@ -149,7 +145,7 @@ export default function NameNextPage() {
         <div>
           <p className='time'>Встигни записатись на тренування: {minutes}:{seconds < 10 ? '0' : ''}{seconds}</p>
         </div>
-        <Button disabled={optionsButtonDisabled} onClick={putNumberDays} sx={{ fontSize: '11px', border: '1px solid' }} size='small'>Надіслати</Button>
+        <Button disabled={optionsButtonDisabled} onClick={putNumberDays} sx={{ fontSize: '11px', border: '1px solid' }} size='small'>Записатись</Button>
         <h2 className='card-name'>{data.name}</h2>
       </div>
       <CreateModal

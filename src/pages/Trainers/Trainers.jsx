@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { trainers } from '../../../../api';
-import TrainingCard from '../ComponentMain/TrainingCard';
+import { trainers } from '../../api';
+import TrainingCard from '../../components/Templates/Main/ComponentMain/TrainingCard';
 import './Trainers.css';
 
 export default function Trainers() {

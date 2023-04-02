@@ -1,10 +1,9 @@
 import React from 'react';
 import { Box, Grid, styled } from '@mui/material';
-import Header from '../components/Templates/Header/Header';
-import Footer from '../components/Templates/Footer/Footer';
-import NavBar from '../components/Templates/NavBar/NavBar';
-
-import './GridTemplate.css';
+import Header from '../../components/Templates/Header/Header';
+import Footer from '../../components/Templates/Footer/Footer';
+import NavBar from '../../components/Templates/NavBar/NavBar';
+import './MainPage.css';
 
 const HeaderWrapper = styled(Box)(() => ({
   height: '14vh',
@@ -48,7 +47,7 @@ const FooterWrapper = styled(Box)(() => ({
   margin: '1vh',
 }));
 
-export default function GridTemplate({ children }) {
+export default function Main({ children }) {
   return (
     <div className='GridTemplate'>
       <Grid container>

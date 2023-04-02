@@ -18,7 +18,7 @@ export default function Navbar() {
       <button className='item'>
         <Link
           style={{ display: 'block', padding: '10px' }}
-          to={'/'}
+          to={'/trainings'}
         >Вібир тренувань
         </Link>
       </button>

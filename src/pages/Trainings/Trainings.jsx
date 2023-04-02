@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import TrainingCard from './ComponentMain/TrainingCard';
-// import { classes } from '../../../api';
-// можно переименовывать переменные import
-import { classes as newClasses } from '../../../api';
-import './Main.css';
+import TrainingCard from '../../components/Templates/Main/ComponentMain/TrainingCard';
+import { classes } from '../../api';
+import './Trainings.css';
 
-export default function Trains() {
+export default function Trainings() {
   const [trainingsData, setClasses] = useState([]);
-  // const info = '555';
+
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await newClasses.fetch();
-        // const { data } = await newClasses(info).fetch();
+        const { data } = await classes.fetch();
         setClasses(data);
       } catch (err) {
         console.log(err);

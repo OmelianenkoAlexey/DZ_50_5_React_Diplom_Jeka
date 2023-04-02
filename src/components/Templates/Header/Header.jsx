@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import { reset } from '../Main/ComponentMain/NameNextPage';
+import { reset } from '../../../pages/SportPage/SportPage';
 
 export default function Header() {
   const [inputWidth, setInputWidth] = useState('120px');
@@ -17,8 +17,6 @@ export default function Header() {
     setInputValue(e.target.value);
   };
 
-  console.log(inputValue);
-
   const newInputValue = inputValue.split(' ').join('_').toLowerCase();
 
   const searchLocal = localStorage.getItem('searchLocal');
@@ -30,7 +28,7 @@ export default function Header() {
   searchLocalMap.map((i) => {
     if (i.name.toLowerCase() === inputValue.toLowerCase()) {
       search = i;
-      pach = `/${newInputValue}`;
+      pach = `/trainings/${newInputValue}`;
     }
     return ('');
   });
