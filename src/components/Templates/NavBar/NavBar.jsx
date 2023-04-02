@@ -5,7 +5,6 @@ import './NavBar.css';
 
 const NavBarWrapper = styled(Box)(() => ({
   padding: '20px',
-  overflow: 'scroll',
   height: '58vh',
   display: 'flex',
   flexDirection: 'column',
@@ -19,14 +18,14 @@ export default function Navbar() {
       <button className='item'>
         <Link
           style={{ display: 'block', padding: '10px' }}
-          to={'/gym_team'}
+          to={'/'}
         >Вібир тренувань
         </Link>
       </button>
       <button className='item'>
         <Link
           style={{ display: 'block', padding: '10px' }}
-          to={'/gym_team/trainers'}
+          to={'/trainers'}
         >Наші тренери
         </Link>
       </button>

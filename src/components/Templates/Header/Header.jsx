@@ -17,6 +17,8 @@ export default function Header() {
     setInputValue(e.target.value);
   };
 
+  console.log(inputValue);
+
   const newInputValue = inputValue.split(' ').join('_').toLowerCase();
 
   const searchLocal = localStorage.getItem('searchLocal');
@@ -28,7 +30,7 @@ export default function Header() {
   searchLocalMap.map((i) => {
     if (i.name.toLowerCase() === inputValue.toLowerCase()) {
       search = i;
-      pach = `/gym_team/${newInputValue}`;
+      pach = `/${newInputValue}`;
     }
     return ('');
   });
@@ -38,6 +40,7 @@ export default function Header() {
     const newTrainings = JSON.stringify(search);
     localStorage.setItem('newTrainings', newTrainings);
     reset();
+    setInputValue('');
   };
 
   return (
