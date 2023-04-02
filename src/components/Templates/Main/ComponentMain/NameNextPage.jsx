@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './NameNextPage.css';
 import { Button } from '@mui/material';
 import CreateModal from './CreateModal';
@@ -14,12 +15,15 @@ export function reset() {
 }
 
 export default function NameNextPage() {
+  const { name } = useParams();
+  console.log(name);
+
   let data = null;
   let time = {};
 
-  const name = localStorage.getItem('newTrainings');
+  const nameData = localStorage.getItem('newTrainings');
 
-  const newName = JSON.parse(name);
+  const newName = JSON.parse(nameData);
   const nameButton = localStorage.getItem('trainingName');
 
   if (nameButton === null) {
